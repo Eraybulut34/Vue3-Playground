@@ -1,32 +1,26 @@
-<template>
-  <div class="hello">
-
-  </div>
-</template>
-
 <script>
+import { ref } from "vue";
+import axios from "axios";
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
-}
+  setup() {
+    const count = ref(0);
+    const url = "https://jsonplaceholder.typicode.com/posts";
+    const items = null;
+
+    return {
+      items,
+      url,
+      count,
+    };
+  },
+
+  mounted() {
+    axios.get(this.url).then((response) => (this.items = response.data));
+  },
+};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
+<template>
+  <div class="" v-for="item in items" :key="item.id">{{ item.id }}</div>
+  <button @click="count += 100">{{ count }}</button>
+</template>
