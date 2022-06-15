@@ -1,26 +1,46 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div class="flex flex-center flex-column items-center">
+  <h1 class="text-3xl font-bold-underline red bg-red-200 mt-0 w-64 mx-0 flex-auto">Eray</h1>
+
+  <button class="btn bg-green-500 text-bold-underline ml-4 flex-auto" @click="increment">Arttır</button>
+  <button class="btn flex-auto bg-red-300" @click="decrement">Azalt</button>
+  <h1 class="text-4xl text-bold-underline">{{ count }}</h1>
+</div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import { ref, onMounted } from 'vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+// reactive state
+const count = ref(0)
+
+// functions that mutate state and trigger updates
+function increment() {
+  count.value++
 }
+function decrement() {
+  count.value--
+}
+
+function getAllDAta() {
+  return fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then(users => {
+      console.log(users)
+    })
+}
+
+// lifecycle hooks
+onMounted(() => {
+  getAllDAta()
+  console.log(`The initial count is ${count.value}.`)
+})
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
+  *{
+    margin: 0px;
+  }
+
 </style>
