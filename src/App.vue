@@ -1,5 +1,5 @@
 <template>
-<div class="flex flex-center flex-column items-center">
+<div class="main">
   <h1 class="text-3xl font-bold-underline red bg-red-200 mt-0 w-64 mx-0 flex-auto">Eray</h1>
 
   <button class="btn bg-green-500 text-bold-underline ml-4 flex-auto" @click="increment">Arttır</button>
@@ -37,10 +37,22 @@ onMounted(() => {
 })
 </script>
 
-<style>
-
+<style lang="scss">
+////import scss file
+@import 'styles/main.scss';
   *{
     margin: 0px;
   }
+
+.main {
+@include main-bg-color(red);
+@include d-flex(column, center, center);
+  height: 100vh;
+  width: 100vw;
+@include grid-gap(50px);
+
+}
+
+
 
 </style>
