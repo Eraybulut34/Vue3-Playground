@@ -1,11 +1,13 @@
 <template>
-<div class="main">
-  <h1 class="text-3xl font-bold-underline red bg-red-200 mt-0 w-64 mx-0 flex-auto">Eray</h1>
+  <div class="main">
+    <h1 class="text-3xl font-bold-underline red bg-red-200 mt-0 w-64 mx-0 flex-auto">Eray</h1>
 
-  <button class="btn bg-green-500 text-bold-underline ml-4 flex-auto" @click="increment">Arttır</button>
-  <button class="btn flex-auto bg-red-300" @click="decrement">Azalt</button>
-  <h1 class="text-4xl text-bold-underline">{{ count }}</h1>
-</div>
+    <button class="btn bg-green-500 text-bold-underline ml-4 flex-auto" @click="increment">Arttır</button>
+    <button class="btn flex-auto bg-red-300" @click="decrement">Azalt</button>
+
+    <button @click="generateFoodChoice">Yemek Seç</button>
+    <h1 class="text-4xl text-bold-underline">{{ count }}</h1>
+  </div>
 </template>
 
 <script setup>
@@ -30,29 +32,34 @@ function getAllDAta() {
     })
 }
 
-// lifecycle hooks
+const foods = ref(["Arbys", "McDonalds", "KFC", "Tavuk Dünyası", "Baydöner", "Pidem","Green Salad",])
+
+function generateFoodChoice() {
+  const randomIndex = Math.floor(Math.random() * foods.value.length)
+  alert(foods.value[randomIndex])
+
+
+}
 onMounted(() => {
-  getAllDAta()
+generateFoodChoice();
+  getAllDAta();
   console.log(`The initial count is ${count.value}.`)
 })
 </script>
 
 <style lang="scss">
 ////import scss file
-  *{
-    margin: 0px;
-  }
-
-.main {
-@include main-bg-color(red);
-@include d-flex(column, center, center);
-  height: 100vh;
-  width: 100vw;
-@include grid-gap(50px);
-@include font-color(white);
-
+* {
+  margin: 0px;
 }
 
+.main {
+  @include main-bg-color(red);
+  @include d-flex(column, center, center);
+  height: 100vh;
+  width: 100vw;
+  @include grid-gap(50px);
+  @include font-color(white);
 
-
+}
 </style>
