@@ -39,7 +39,6 @@ onMounted(() => {
 
 <style lang="scss">
 ////import scss file
-@import 'styles/main.scss';
   *{
     margin: 0px;
   }
@@ -50,6 +49,7 @@ onMounted(() => {
   height: 100vh;
   width: 100vw;
 @include grid-gap(50px);
+@include font-color(white);
 
 }
 

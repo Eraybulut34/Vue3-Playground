@@ -17,3 +17,9 @@ flex-direction: column;
 @mixin grid-gap($gap) {
   grid-gap: $gap;
 }
+
+@mixin font-color($color) {
+  color: $color;
+
+    
+}
