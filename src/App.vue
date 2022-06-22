@@ -32,7 +32,7 @@ function getAllDAta() {
     })
 }
 
-const foods = ref(["Arbys", "McDonalds", "KFC", "Tavuk Dünyası", "Baydöner", "Pidem","Green Salad",])
+const foods = ref(["Arbys", "McDonalds", "KFC", "Tavuk Dünyası", "Baydöner", "Pidem","Green Salad","Kirpi","Carls Jr.","Popeyes","Bizim Mutfak","Doyuyo"])
 
 function generateFoodChoice() {
   const randomIndex = Math.floor(Math.random() * foods.value.length)
